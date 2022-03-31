@@ -18,7 +18,7 @@ module.exports = (client) => {
 				// Set a new item in the Collection
 				// With the key as the command name and the value as the exported module
 				log.discord(`Loading ${command.data.name} (/)`)
-				client.commands.set(command.data.name, command);
+				client.slashCommands.set(command.data.name, command);
 				client.commandArray.push(command.data.toJSON());
 				log.discord(`Loaded ${command.data.name} (/)`)
 			}
