@@ -15,10 +15,10 @@ module.exports = {
 
         const cmd = client.commands.get(command);
 
-        console.log(cmd)
-
         if (!cmd) return;
 
-        cmd.run(client, message, args);
+        console.log(cmd)
+
+        cmd.execute(client, message, args);
     },
 };

@@ -1,7 +1,3 @@
-const config = require('../config.json');
-const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js');
-const Discord = require('discord.js');
-
 module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction, client) {
@@ -13,7 +9,6 @@ module.exports = {
 
 		try {
 			await command.execute(interaction, client);
-			// console.log(interaction.member.voice.channel)
 		}
 		catch (error) {
 			console.error(error);

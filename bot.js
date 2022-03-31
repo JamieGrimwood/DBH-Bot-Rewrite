@@ -1,4 +1,3 @@
-const { readdirSync } = require('fs');
 const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const log = require('./utils/logger');
@@ -8,23 +7,25 @@ const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAG
 
 client.commands = new Collection();
 client.config = config;
-const commandFolders = readdirSync('./slash-commands');
 
-const functions = readdirSync('./functions')
-    .filter((file) => file.endsWith('.js'));
+const commandFolders = fs.readdirSync('./slash-commands');
 
-const eventFiles = readdirSync('./events')
-    .filter((file) => file.endsWith('.js'));
+const functions = fs.readdirSync('./functions').filter((file) => file.endsWith('.js'));
+
+const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
 
 const commands = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
-for (const file of commands) {
-    const commandName = file.split(".")[0];
-    const command = require(`./commands/${file}`);
 
-    log.discord(`Loading ${commandName}`);
-    client.commands.set(commandName, command);
-    log.discord(`Loaded ${commandName}`)
-}
+(async () => {
+    log.discord(`----- Started loading commands -----`);
+    commands.forEach((file) => {
+        let props = require(__dirname + `/commands/${file}`);
+        let commandName = file.split(".")[0];
+        client.commands.set(commandName, props);
+        log.discord('Loaded the "' + commandName + '" command.');
+    });
+    log.success(`----- Loaded all commands -----`);
+})();
 
 (async () => {
     for (file of functions) {

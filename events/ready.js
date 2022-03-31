@@ -1,5 +1,4 @@
 const log = require('../utils/logger');
-const fetch = require("node-fetch");
 
 module.exports = {
     name: 'ready',
