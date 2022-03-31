@@ -3,7 +3,7 @@ module.exports = {
 	async execute(interaction, client) {
 		if (!interaction.isCommand()) return;
 
-		const command = client.messageCommands.get(interaction.commandName);
+		const command = client.slashCommands.get(interaction.commandName);
 
 		if (!command) return;
 
