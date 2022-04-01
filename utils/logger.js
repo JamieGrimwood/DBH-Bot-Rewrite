@@ -25,11 +25,6 @@ exports.discord = async (data) => {
 	console.log(chalk.blue(dateLog + ' [DISCORD BOT] ' + data));
 };
 
-exports.lavalink = async (data) => {
-	const dateLog = await getDate();
-	console.log(chalk.red(dateLog + ' [LAVALINK] ' + data));
-};
-
 exports.debug = async (data) => {
 	if (config.debug !== true) {
 		return;

@@ -15,9 +15,6 @@ module.exports = {
 
         if (!cmd) return;
 
-        console.log(message.content)
-        console.log(cmd)
-
         cmd.run(client, message, args);
     },
 };
