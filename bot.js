@@ -35,5 +35,4 @@ const commands = fs.readdirSync("./commands").filter(file => file.endsWith(".js"
     client.handleEvents(eventFiles, './events');
     client.handleCommands(slashCommands, './slash-commands');
     client.login(config.token);
-    console.log(client.messageCommands)
 })();
