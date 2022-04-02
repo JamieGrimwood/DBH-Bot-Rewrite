@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const exec = require('child_process').exec;
 
 exports.run = (client, message, args) => {
-    if (message.member.roles.cache.find(r => r.id === "886290773253972028")) {
+    if (message.member.roles.cache.find(r => r.id === "role_id")) {
         
         let command = args.join(" ")
         if (!command) return message.reply('Incorrect Usage!\nUsage: `DBH!exec <command to execute>`')
