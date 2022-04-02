@@ -5,8 +5,23 @@ module.exports = {
     once: true,
     async execute(client) {
         log.discord(`Ready! Logged in as ${client.user.tag}.`);
-        client.user.setStatus('online');
-	client.user.setActivity('over DanBot Hosting', { type: 'WATCHING' });
-
+      
+    const activities = [{
+        "name": "over DanBot Hosting",
+        "type": "WATCHING"
+      }, {
+        "name": "DanBot FM",
+        "type": "LISTENING"
+    }];
+      
+    client.user.setStatus('online');
+      
+    setInterval(() => {
+        const activity = activities[Math.floor(Math.random() * activities.length)];
+        client.user.setActivity(activity.name, {
+            type: activity.type
+        });
+     }, 30000);
+      
     },
 };
