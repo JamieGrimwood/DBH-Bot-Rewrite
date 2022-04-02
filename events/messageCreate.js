@@ -2,7 +2,7 @@ const log = require('../utils/logger');
 
 module.exports = {
     name: 'messageCreate',
-    once: true,
+    on: true,
     async execute(message, client) {
         if (message.author.bot) return;
 
