@@ -6,7 +6,7 @@ exports.run = async (client, message) => {
     let args = message.content.split(' ').slice(1);
     let cont = message.content.split(' ').slice(1).join(' ');
 
-    if (!message.member.roles.cache.find(r => r.id === "role_id")) {
+    if (!message.member.roles.cache.find(r => r.id === "788856610310455316")) {
 
         message.channel.send('Evaluating...').then(msg => {
             const responses = ["SyntaxError: Unexpected token F in JSON at position 48", "SyntaxError: Unexpected identifier", 'UnhandledPromiseRejectionWarning: DiscordAPIError: Missing Permissions', "TypeError: Cannot read property 'messages' of undefined", "UnhandledPromiseRejectionWarning: MongoError: bad auth : Authentication failed.", `TypeError: Cannot read property '${args.join(' ')}' of undefined`]
@@ -84,7 +84,7 @@ exports.run = async (client, message) => {
                 }).catch(e => logger.error(e));
             } catch (err) {
                 let errorcode = new Discord.MessageEmbed()
-                    .setAuthor({ text: `Eval by ${message.author.tag}`, iconURL: `https://cdn.discordapp.com/emojis/314405560701419520.png` })
+                    .setAuthor({ name: `Eval by ${message.author.tag}`, iconURL: `https://cdn.discordapp.com/emojis/314405560701419520.png` })
                     .setDescription(`**:inbox_tray: Input:**\n\n\`\`\`js\n${cont}\`\`\``, true)
                     .addField(`\u200b`, `**:outbox_tray: Output:**\`\`\`js\n${clean(err)}\`\`\``, true)
                     .setColor(0xFF0000)
